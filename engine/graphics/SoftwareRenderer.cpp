@@ -39,7 +39,7 @@ void SoftwareRenderer::rasterize(Vec4 a,Vec4 b,Vec4 c,Color color) {
     const auto screen=[&](Vec4 p) {
         const float iw=1.f/p.w;
         return Vec3{(p.x*iw*.5f+.5f)*(width_-1),
-                    (1.f-(p.y*iw*.5f+.5f))*(height_-1),p.z*iw};
+                    (1.f-(p.y*iw*.5f+.5f))*(height_-1),(p.z*iw)*.5f+.5f};
     };
     const Vec3 v0=screen(a),v1=screen(b),v2=screen(c);
     const float area=(v1.x-v0.x)*(v2.y-v0.y)-(v1.y-v0.y)*(v2.x-v0.x);
