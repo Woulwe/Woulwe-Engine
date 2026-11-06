@@ -1,20 +1,30 @@
 cmake_minimum_required(VERSION 3.22)
-project(WoulweEngine VERSION 0.3.0 LANGUAGES CXX)
+project(WoulweEngine VERSION 1.0.0 LANGUAGES CXX)
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
-add_library(woulwe_core engine/core/Engine.cpp engine/scene/Scene.cpp engine/graphics/Mesh.cpp engine/graphics/SoftwareRenderer.cpp)
+
+add_library(woulwe_core
+    engine/core/Engine.cpp
+    engine/scene/Scene.cpp
+    engine/graphics/Mesh.cpp
+    engine/graphics/SoftwareRenderer.cpp
+    engine/physics/Physics.cpp
+)
 target_include_directories(woulwe_core PUBLIC engine)
+
 if(ANDROID)
- add_library(woulwe_android SHARED platform/android/AndroidEntry.cpp)
- target_link_libraries(woulwe_android PRIVATE woulwe_core android log)
+    add_library(woulwe_android SHARED platform/android/AndroidEntry.cpp)
+    target_link_libraries(woulwe_android PRIVATE woulwe_core android log)
 else()
- add_executable(WoulweEngineDemo samples/desktop/main.cpp)
- target_link_libraries(WoulweEngineDemo PRIVATE woulwe_core)
+    add_executable(WoulweEngineDemo samples/desktop/main.cpp)
+    target_link_libraries(WoulweEngineDemo PRIVATE woulwe_core)
 endif()
+
 include(CTest)
 if(BUILD_TESTING AND NOT ANDROID)
- add_executable(WoulweEngineTests tests/EngineTests.cpp)
- target_link_libraries(WoulweEngineTests PRIVATE woulwe_core)
- add_test(NAME WoulweEngineTests COMMAND WoulweEngineTests)
+    add_executable(WoulweEngineTests tests/EngineTests.cpp)
+    target_link_libraries(WoulweEngineTests PRIVATE woulwe_core)
+    add_test(NAME WoulweEngineTests COMMAND WoulweEngineTests)
 endif()
