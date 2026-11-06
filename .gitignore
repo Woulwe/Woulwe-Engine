@@ -1,0 +1,10 @@
+build/
+cmake-build-*/
+.gradle/
+.idea/
+.vscode/
+*.apk
+*.aab
+*.so
+*.dll
+*.exe
