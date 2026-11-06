@@ -2,6 +2,7 @@
 #include "graphics/Mesh.hpp"
 #include "graphics/SoftwareRenderer.hpp"
 #include <cassert>
+#include <cstdio>
 #include <cmath>
 #include <fstream>
 
