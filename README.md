@@ -1,40 +1,49 @@
-# Woulwe Engine
+# Woulwe Engine 1.0.0
 
-Original cross-platform game engine for Windows and Android.
+Woulwe Engine is an original C++20 game-engine foundation with a portable core, a CPU reference 3D renderer, a desktop sample and an Android native application shell.
 
-## Milestone 0.3.0 — Asset and camera foundation
+## Included
 
-- C++20 engine core and scene objects
+- Engine lifecycle and scene object storage
 - 3D vector/matrix math and perspective camera
-- Camera orbit and dolly controls
-- Indexed cube mesh and Wavefront OBJ geometry import
-- CPU triangle rasterizer, depth buffer and directional diffuse lighting
-- PPM frame output, CMake smoke tests and GitHub Actions CI
+- Orbit and dolly camera controls
+- Indexed cube mesh and Wavefront OBJ position/face importer
+- CPU triangle rasterizer with depth buffer, diffuse directional lighting and PPM output
+- Platform-neutral keyboard/pointer input state
+- Basic gravity-driven rigid bodies with ground contact and restitution
+- Material parameter data type
+- CMake desktop build and automated smoke tests
+- Android application project with JNI native-core lifecycle
+- GitHub Actions workflows for desktop tests and Android debug APK packaging
 
-### OBJ importer scope
-The first importer reads OBJ vertex positions (v) and polygon faces (f), including positive/negative position indices and slash-separated face tokens. Polygons are fan-triangulated and receive generated flat normals. UVs, material libraries and glTF are future work.
+## Windows desktop build
 
-## Build (Windows / desktop)
-Requirements: CMake 3.22+ and a C++20 compiler.
+Requirements: CMake 3.22+ and a C++20 compiler (Visual Studio 2022 or recent MinGW).
 
 ```bash
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON
-cmake --build build --config Release
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTING=ON
+cmake --build build --config Debug
 ctest --test-dir build --output-on-failure
 ```
 
-Run WoulweEngineDemo. It writes woulwe_frame.ppm in the working directory.
+Run `WoulweEngineDemo`; it writes `woulwe_frame.ppm` to the working directory.
 
-## Android
-The shared engine core is platform-independent and the Android NDK entry point is under platform/android. The software renderer is a portable reference renderer; an Android app shell and GPU surface integration are still required before an installable Android build is available.
+## Android APK
 
-## Roadmap
-1. Core and scene model
-2. Graphics foundation: math, camera, mesh, rasterizer, depth and light
-3. Asset/camera foundation (current): OBJ import, orbit/dolly camera, CI tests
-4. Vulkan backend for Windows and Android
-5. Materials, textures, glTF import and editor viewport
-6. Input, physics, animation, audio, scripting, AI, multiplayer and packaging
+The Android Studio/Gradle project is in the repository root. It packages the native C++ core through CMake and JNI.
 
-## Architecture rule
-Keep engine logic platform-independent. Platform APIs belong under platform/; rendering backends belong under engine/graphics/.
+Build with JDK 17, Android SDK 35, NDK 27.2.12479018, CMake 3.22.1 and Gradle 8.9:
+
+```bash
+gradle --no-daemon :app:assembleDebug
+```
+
+The APK is produced at `app/build/outputs/apk/debug/app-debug.apk`. GitHub Actions uploads the debug APK as the `WoulweEngine-Android-debug` artifact.
+
+## Current product boundary
+
+This is a complete, buildable starter engine baseline, not a feature-equivalent replacement for Unreal or Unity. The Android app currently verifies native integration and displays a launch screen; the software renderer is an offline/reference renderer, not a real-time GPU renderer. OBJ import currently handles positions and polygon faces, not UV/material libraries. Physics currently handles gravity and a ground plane, not a full collision solver. These limits are explicit so the project does not advertise unimplemented systems as finished.
+
+## License
+
+See the repository license file when one is added by the project owner.
