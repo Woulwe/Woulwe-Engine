@@ -42,7 +42,7 @@ The APK is produced at `app/build/outputs/apk/debug/app-debug.apk`. GitHub Actio
 
 ## Current product boundary
 
-This is a complete, buildable starter engine baseline, not a feature-equivalent replacement for Unreal or Unity. The Android app currently verifies native integration and displays a launch screen; the software renderer is an offline/reference renderer, not a real-time GPU renderer. OBJ import currently handles positions and polygon faces, not UV/material libraries. Physics currently handles gravity and a ground plane, not a full collision solver. These limits are explicit so the project does not advertise unimplemented systems as finished.
+This is a complete, buildable starter engine baseline, not a feature-equivalent replacement for Unreal or Unity. The Android app now opens an interactive OpenGL ES 2.0 scene editor: it renders a live 3D cube scene, allows orbiting the camera by dragging, adding cubes, toggling the ground grid and resetting the scene. The C++ core is initialized through JNI. The Android editor currently uses a compact built-in primitive workflow; it is not yet a full desktop-style asset/editor suite. The C++ software renderer remains an offline/reference renderer, not a real-time GPU renderer. OBJ import currently handles positions and polygon faces, not UV/material libraries. Physics currently handles gravity and a ground plane, not a full collision solver. These limits are explicit so the project does not advertise unimplemented systems as finished.
 
 ## License
 
