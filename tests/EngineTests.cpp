@@ -1,9 +1,11 @@
 #include "graphics/Camera.hpp"
 #include "graphics/Mesh.hpp"
 #include "graphics/SoftwareRenderer.hpp"
+#include "input/Input.hpp"
+#include "physics/Physics.hpp"
 #include <cassert>
-#include <cstdio>
 #include <cmath>
+#include <cstdio>
 #include <fstream>
 
 int main() {
@@ -35,5 +37,20 @@ int main() {
     renderer.draw(cube,camera);
     assert(renderer.savePpm("woulwe_test_frame.ppm"));
     std::remove("woulwe_test_frame.ppm");
+
+    woulwe::Input input;
+    input.setKey(woulwe::Key::W,true);
+    assert(input.keyDown(woulwe::Key::W));
+    input.setPointerDelta(4.f,-2.f);
+    assert(input.pointerDeltaX()==4.f);
+    input.endFrame();
+    assert(input.pointerDeltaX()==0.f);
+
+    woulwe::physics::World world;
+    woulwe::physics::Body body;
+    body.position={0.f,3.f,0.f};
+    world.addBody(body);
+    for(int i=0;i<120;++i) world.step(1.f/60.f);
+    assert(world.bodies().front().position.y>=0.49f);
     return 0;
 }
