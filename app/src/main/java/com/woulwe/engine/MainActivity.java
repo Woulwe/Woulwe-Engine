@@ -118,6 +118,10 @@ public final class MainActivity extends Activity {
                 lastX=e.getX(); lastY=e.getY(); return true;
             }
             if(e.getAction()==MotionEvent.ACTION_UP) {
+                if(!dragging && e.getY() < 58*d && e.getX() > w-205*d) {
+                    startActivity(new android.content.Intent(MainActivity.this, GameCreatorActivity.class));
+                    return true;
+                }
                 if(!dragging && e.getY()>h-70*d && e.getY()<h) {
                     float x=e.getX();
                     if(x>=start && x<start+bw) renderer.addCube();
