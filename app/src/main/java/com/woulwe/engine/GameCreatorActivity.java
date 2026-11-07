@@ -36,7 +36,7 @@ import java.util.concurrent.Executors;
 public final class GameCreatorActivity extends Activity {
     private static final String AI_URL = "https://bronoueyjmiedzclgcms.supabase.co/functions/v1/leor-ai";
     // Supabase anon key is a public client key, not a service-role secret.
-    private static final String SUPABASE_PUBLIC_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJybm91ZXlqbWllZHpjbGdj bXM iLCJyb2xlIjoiYW5vbiIsImlhdCI6MTc4OTM4NjMxNCwiZXhwIjoyMTA0OTYyMzE0fQ.wxCUkkl8ye7MLM6EA6vTm1U38ju1YqycJtNiBPn-xpM".replace(" ", "");
+    private static final String SUPABASE_PUBLIC_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJyb25vdWV5am1pZWR6Y2xnY21zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkzODYzMTQsImV4cCI6MjEwNDk2MjMxNH0.wxCUkkl8ye7MLM6EA6vTm1U38ju1YqycJtNiBPn-xpM;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private EditText description;
     private Button createButton;
@@ -132,7 +132,7 @@ public final class GameCreatorActivity extends Activity {
 
         Button download = new Button(this);
         download.setText("Скачать игру в Загрузки");
-        download.setTextAllCaps(false);
+        download.setAllCaps(false);
         download.setTextColor(Color.WHITE);
         download.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.rgb(39, 52, 78)));
         LinearLayout.LayoutParams downloadParams = new LinearLayout.LayoutParams(-1, dp(52));
