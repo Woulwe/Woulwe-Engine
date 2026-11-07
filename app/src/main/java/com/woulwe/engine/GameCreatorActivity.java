@@ -80,7 +80,7 @@ public final class GameCreatorActivity extends Activity {
         root.addView(title, titleParams);
 
         TextView subtitle = new TextView(this);
-        subtitle.setText("Опиши идею своими словами. ИИ подготовит игру, которую можно запустить на телефоне.");
+        subtitle.setText("Опиши идею своими словами. Получи игровую версию, которую можно запустить на телефоне.");
         subtitle.setTextColor(Color.rgb(177, 188, 211));
         subtitle.setTextSize(15);
         subtitle.setLineSpacing(dp(3), 1f);
