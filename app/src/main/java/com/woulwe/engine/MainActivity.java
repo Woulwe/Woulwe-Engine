@@ -89,7 +89,7 @@ public final class MainActivity extends Activity {
             text(c,"WOULWE",20*d,25*d,17*d,Color.WHITE,true);
             text(c,"ENGINE",20*d,43*d,9*d,Color.rgb(142,158,190),true);
             text(c,"SCENE EDITOR",116*d,35*d,12*d,Color.rgb(195,205,226),true);
-            text(c,"LIVE 3D VIEW",w-125*d,35*d,10*d,Color.rgb(103,220,174),true);
+            text(c,"AI GAME CREATOR  →",w-175*d,35*d,10*d,Color.rgb(103,220,174),true);
 
             p.setColor(Color.argb(220,17,22,34)); c.drawRect(0,h-70*d,w,h,p);
             text(c,"HIERARCHY",18*d,h-45*d,10*d,Color.rgb(139,154,183),true);
