@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application android:theme="@android:style/Theme.Material.NoActionBar" android:label="Woulwe Engine" android:allowBackup="false">
-        <activity android:name=".MainActivity" android:screenOrientation="landscape" android:exported="true">
+        <activity android:name=".GameCreatorActivity" android:screenOrientation="landscape" android:exported="false" /><activity android:name=".MainActivity" android:screenOrientation="landscape" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
